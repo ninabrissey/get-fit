@@ -1,5 +1,18 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
-  height: 100%;
+/* body {
+  height: 100vh;
+} */
+.wrapper {
+  height: 90vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  gap: 1em;
 }
+
+section {
+  background-color: royalblue;
+}
+/*# sourceMappingURL=styles.css.map */
