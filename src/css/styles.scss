@@ -1,0 +1,36 @@
+/* body {
+  height: 100vh;
+} */
+
+.wrapper {
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1em;
+}
+
+section {
+  background-color: royalblue;
+}
+
+.user-info {
+  grid-column: 1/3;
+}
+
+.section-4 {
+  grid-row: 2/4;
+}
+
+.section-6 {
+  grid-column: 3/5;
+}
+
+.section-7 {
+  grid-column: 2/4;
+}
+
+// styling for icons
+.icon {
+  height: 30px;
+}
