@@ -7,11 +7,13 @@ class User {
     this.dailyStepGoal = userData.dailyStepGoal;
     this.friends = userData.friends;
   }
-}
-//userData is the parameter
-export default User;
 
-// should have a paramter to take in userData object
-// object property key for each of the keys in the userData object
-// "id","name","address","email","strideLength","dailyStepGoal","friends"
-// getFirstName(); method to return first name
+  getFirstName() {
+    if (!this.name) {
+      return 'Hello';
+    }
+    return this.name.split(' ')[0];
+  }
+}
+
+export default User;
