@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import User from '../src/User';
 
 describe('User', () => {
-  //variable for the data object
   let user;
   let data;
 
@@ -32,30 +31,51 @@ describe('User', () => {
     expect(user.name).to.equal('Nina Rachel');
   });
 
-  it.skip('should have a key of address', () => {
+  it('should have a key of address', () => {
     expect(user.address).to.equal('1500 Hotgirl Street, Denver, CO 80030');
   });
 
-  it.skip('should have a key of email', () => {
+  it('should have a key of email', () => {
     expect(user.email).to.equal('ladies@hotmail.com');
   });
 
-  it.skip('should have a key of stride length', () => {
+  it('should have a key of stride length', () => {
     expect(user.strideLength).to.equal(4.1);
   });
 
-  it.skip('should have a key of daily step goal', () => {
+  it('should save stride as a number', () => {
+    expect(user.strideLength).to.be.a('number');
+  });
+
+  it('should have a key of daily step goal', () => {
     expect(user.dailyStepGoal).to.equal(10000);
   });
 
-  it.skip('should have a key of friends', () => {
+  it('should have a key of friends', () => {
     expect(user.friends).to.be.a('array');
     expect(user.friends[0]).to.equal(5);
   });
 
-  // it('should be able to return a first name', () => {
-  //   //getFirstName()
-  // });
-  // ​
-  //   it('should return a greeting if a user has not entered a first name', () => {});
+  it('should be able to return a first name', () => {
+    let firstName = user.getFirstName();
+
+    expect(firstName).to.equal('Nina');
+  });
+
+  it('should return a greeting if a user has not entered a first name', () => {
+    let noNameData = {
+      id: 1,
+      name: '',
+      address: '1500 Hotgirl Street, Denver, CO 80030',
+      email: 'ladies@hotmail.com',
+      strideLength: 4.1,
+      dailyStepGoal: 10000,
+      friends: [5, 2, 14],
+    };
+    let userNoName = new User(noNameData);
+
+    let firstName = userNoName.getFirstName();
+
+    expect(firstName).to.equal('Hello');
+  });
 });
