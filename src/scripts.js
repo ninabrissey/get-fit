@@ -16,13 +16,18 @@ import './images/running.png';
 // global variables 👇
 // instantiate UserRepo
 const allUsers = new UserRepository(userData);
-console.log('allUsers, ', allUsers);
 // instantiate Jennie via getUserInfo(45);
 const currentUser = allUsers.getUserInfo(45);
-console.log('user, ', currentUser);
 
 // query selectors 👇
-// give ids to all the things in html that need manipulatin'
+const userGreeting = document.getElementById('userGreeting');
+const address = document.getElementById('address');
+const email = document.getElementById('email');
+const stepGoal = document.getElementById('stepGoals');
+const strideLength = document.getElementById('strideLength');
+const friend1 = document.getElementById('friend1');
+const friend2 = document.getElementById('friend2');
+const friend3 = document.getElementById('friend3');
 
 // event listeners 👇
 
