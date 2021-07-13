@@ -27,6 +27,10 @@ describe('User', () => {
     expect(user).to.be.instanceOf(User);
   });
 
+  it('should have an id', () => {
+    expect(user.id).to.equal(1);
+  });
+
   it('should have a key of name', () => {
     expect(user.name).to.equal('Nina Rachel');
   });
