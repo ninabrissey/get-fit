@@ -46,16 +46,20 @@ describe('User Repository', () => {
     expect(userRepo).to.be.instanceOf(UserRepository);
   });
 
-  it("should hold all user's data", () => {
+  it("should start with an array user's data", () => {
     expect(userRepo.allUsers).to.be.a('array');
   });
 
-  it('should hold instances of User', () => {
+  it('should be able to instantiate all Users', () => {
+    userRepo.instantiateAllUsers();
+
     expect(userRepo.allUsers[0]).to.be.instanceOf(User);
     expect(userRepo.allUsers[1].name).to.equal('Lion Floof');
   });
 
   it('should return requested User object instances', () => {
+    userRepo.instantiateAllUsers();
+
     let userInfo1 = userRepo.getUserInfo(2);
     let userInfo2 = userRepo.getUserInfo(1);
 
@@ -64,6 +68,8 @@ describe('User Repository', () => {
   });
 
   it('should be able to return the average step goal amongst all users', () => {
+    userRepo.instantiateAllUsers();
+
     let avgStepGoal = userRepo.calculateAverageStepGoal();
 
     expect(avgStepGoal).to.equal(10033);
