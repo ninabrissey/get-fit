@@ -4,6 +4,8 @@
 import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
+import getAllData from './apiCalls';
+// import domUpdates from './domUpdates';
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
@@ -13,10 +15,23 @@ import './images/running.png';
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
+//FETCH CALL 1
+
+// const printData = () => {
+//   apiData1.then((a) => {
+//     console.log(a);
+//     return a;
+//   });
+// };
+
+// let check = printData();
+// console.log(check);
+
 // global variables 👇
 // instantiate UserRepo
-const userRepo = new UserRepository(userData);
 let currentUser;
+let userRepo; /* = new UserRepository(userData); */
+let fetchSleepData;
 
 // query selectors 👇
 const userGreeting = document.getElementById('userGreeting');
@@ -32,11 +47,37 @@ const friend3 = document.getElementById('friend3');
 window.addEventListener('load', loadUserData);
 
 // functions: handlers and helpers 👇
-function loadUserData() {
-  userRepo.instantiateAllUsers();
-  currentUser = userRepo.getUserInfo(45);
-  displayProfileBox();
+function getData() {
+  fetch('http://localhost:3001/api/v1/users')
+    .then((response) => response.json())
+    .then((data) => {
+      userRepo = new UserRepository(data.userData);
+      userRepo.instantiateAllUsers();
+      currentUser = userRepo.getUserInfo(45);
+      displayProfileBox();
+      // console.log(userRepo);
+      // // return userRepo;
+    });
+  // return userRepo;
+  // .catch((err) => console.log('oh butts'));
 }
+
+function loadUserData() {
+  getAllData().then((data) => {
+    userRepo = new UserRepository(data[0].userData);
+    console.log(userRepo);
+    //userRepo = new UserRepository(data.userData);
+    userRepo.instantiateAllUsers();
+    currentUser = userRepo.getUserInfo(45);
+    displayProfileBox();
+  });
+  // getData();
+  // userRepo.instantiateAllUsers();
+  // currentUser = userRepo.getUserInfo(45);
+  // displayProfileBox();
+}
+
+console.log('check', userRepo);
 
 function displayProfileBox() {
   userGreeting.innerText = currentUser.getFirstName();
