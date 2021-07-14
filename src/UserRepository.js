@@ -2,10 +2,15 @@ import User from '../src/User';
 
 class UserRepository {
   constructor(data) {
-    this.allUsers = data.map((user) => {
+    this.allUsers = data;
+  }
+
+  instantiateAllUsers() {
+    let users = this.allUsers.map((user) => {
       let userInfo = new User(user);
       return userInfo;
     });
+    this.allUsers = users;
   }
 
   getUserInfo(userId) {
