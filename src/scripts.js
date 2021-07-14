@@ -4,6 +4,8 @@
 import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
+import getAllData from './apiCalls';
+// import domUpdates from './domUpdates';
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
@@ -14,9 +16,10 @@ import './images/running.png';
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 // global variables 👇
-// instantiate UserRepo
-const userRepo = new UserRepository(userData);
+
 let currentUser;
+let userRepo;
+//let fetchSleepData;
 
 // query selectors 👇
 const userGreeting = document.getElementById('userGreeting');
@@ -32,10 +35,19 @@ const friend3 = document.getElementById('friend3');
 window.addEventListener('load', loadUserData);
 
 // functions: handlers and helpers 👇
+
 function loadUserData() {
+  getAllData().then((data) => {
+    //this is retrieving the array of data array from Promise.all in apiCalls.js
+    getCurrentUser(data[0].userData);
+    displayProfileBox(); //DOM
+  });
+}
+
+function getCurrentUser(parsedData) {
+  userRepo = new UserRepository(parsedData);
   userRepo.instantiateAllUsers();
   currentUser = userRepo.getUserInfo(45);
-  displayProfileBox();
 }
 
 function displayProfileBox() {
