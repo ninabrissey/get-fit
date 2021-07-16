@@ -8,14 +8,3 @@ class Sleep {
 }
 
 export default Sleep;
-
-/* [
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-*/
