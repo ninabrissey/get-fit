@@ -9,6 +9,32 @@ import getAllData from './apiCalls';
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
+import {
+  Chart,
+  ArcElement,
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  BubbleController,
+  DoughnutController,
+  LineController,
+  PieController,
+  PolarAreaController,
+  RadarController,
+  ScatterController,
+  CategoryScale,
+  LinearScale,
+  LogarithmicScale,
+  RadialLinearScale,
+  TimeScale,
+  TimeSeriesScale,
+  Decimation,
+  Filler,
+  Legend,
+  Title,
+  Tooltip,
+} from 'chart.js';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/running.png';
@@ -35,7 +61,6 @@ const friend3 = document.getElementById('friend3');
 window.addEventListener('load', loadUserData);
 
 // functions: handlers and helpers 👇
-
 function loadUserData() {
   getAllData().then((data) => {
     //this is retrieving the array of data array from Promise.all in apiCalls.js
