@@ -121,6 +121,7 @@ describe('AllTimeHydration', () => {
 
   it('should be able populate user array with dailyHydration objects for that user', () => {
     allTimeHydration.getIndividualHydration(1);
+
     const isAllSame = allTimeHydration.individualHydration.every(
       (day) => day.id === 1
     );
@@ -133,9 +134,9 @@ describe('AllTimeHydration', () => {
 
   it("should be able to calculate an individual's average daily ounces", () => {
     allTimeHydration.getIndividualHydration(1);
-    // second method total of all ounces divided by length of array
+
     let average = allTimeHydration.calculateAvgOunces();
-    //need to use Math.round
+
     expect(average).to.equal(54);
   });
 
@@ -149,16 +150,18 @@ describe('AllTimeHydration', () => {
       date: '2019/06/12',
       numOunces: 56,
     });
-    //most recent date is last in the array
   });
 
-  it.only('should be able to return daily ounces for a different seven day period', () => {
+  it('should be able to return daily ounces for a different seven day period', () => {
     allTimeHydration.getIndividualHydration(2);
 
-    const weeksHydration = allTimeHydration.getWeeklyHydration('2019/06/09');
+    const weeksHydration = allTimeHydration.getWeeklyHydration('2019/06/14');
 
-    expect(weeksHydration).to.deep.equal([87, 36, 20, 29, 39, 28, 100]);
-    //most recent date is last in the array
+    expect(weeksHydration[1]).to.deep.equal({
+      id: 2,
+      date: '2019/06/13',
+      numOunces: 100,
+    });
   });
 
   it('should return the daily ounces array even if the length of the array is less than seven', () => {
@@ -189,11 +192,37 @@ describe('AllTimeHydration', () => {
         numOunces: 75,
       },
     ];
-    //if the length of the array is less then 7 or less return the whole array
+    allTimeHydration = new AllTimeHydration(hydrationData);
     allTimeHydration.getIndividualHydration(1);
 
-    const weeksHydration = allTimeHydration.getWeeklyHydration('2019/06/14');
+    const lessThanWeekHydration =
+      allTimeHydration.getWeeklyHydration('2019/06/14');
 
-    expect(weeksHydration).to.deeply.equal([75, 47, 37]);
+    expect(lessThanWeekHydration).to.deep.equal([
+      {
+        id: 1,
+        date: '2019/06/15',
+        numOunces: 37,
+      },
+      {
+        id: 1,
+        date: '2019/06/14',
+        numOunces: 47,
+      },
+      {
+        id: 1,
+        date: '2019/06/13',
+        numOunces: 75,
+      },
+    ]);
+  });
+
+  it('should be handle data for an incomplete week', () => {
+    allTimeHydration.getIndividualHydration(2);
+
+    const lessThanWeekHydration =
+      allTimeHydration.getWeeklyHydration('2019/06/08');
+
+    expect(lessThanWeekHydration[1].numOunces).to.deep.equal(87);
   });
 });
