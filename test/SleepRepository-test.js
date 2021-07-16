@@ -51,63 +51,71 @@ describe('SleepRepository', () => {
     expect(sleepRepo.individualsSleep[0]).to.be.instanceOf(Sleep);
   });
 
-  it.skip('should be able return how many hours an individual slept on a given date', () => {
-    const sleepReport = sleepRepo.getOneSleep(1, '2019/06/14');
+  it('should be able return how many hours an individual slept on a given date', () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const sleepReport = sleepRepo.getOneSleep('2019/06/14');
 
     expect(sleepReport).to.equal(10.8);
   });
 
-  it.skip('should be able to return the number of hours slept for a different date', () => {
-    const sleepReport = sleepRepo.getOneSleep(2, '2019/06/13');
+  it('should be able to return the number of hours slept for a different date', () => {
+    sleepRepo.getIndividualsSleep(2);
+
+    const sleepReport = sleepRepo.getOneSleep('2019/06/13');
 
     expect(sleepReport).to.equal(9.6);
   });
 
-  it.skip('should be able to return the average number of hours an individual user slept', () => {
-    const avgSleep = sleepRepo.calculateAvgSleep(1);
+  it('should be able to return the average number of hours an individual user slept', () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const avgSleep = sleepRepo.calculateAvg('hoursSlept');
 
     expect(avgSleep).to.equal(6.6);
   });
 
-  it.skip('should should be able to return the average sleep quality score for an individual user', () => {
-    const avgScore = sleepRepo.calculateAvgScore(1);
+  it('should should be able to return the average sleep quality score for an individual user', () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const avgScore = sleepRepo.calculateAvg('sleepQuality');
 
     expect(avgScore).to.equal(3.5);
   });
 
-  it.skip("should be able to return a week's worth of hours slept", () => {
-    const weekOfSleep = sleepRepo.getSevenDays(1, '2019/06/15', 'sleep');
+  it("should be able to return a week's worth of hours slept", () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const weekOfSleep = sleepRepo.getSevenDays('2019/06/15', 'hoursSlept');
 
     expect(weekOfSleep).to.deep.equal([6.1, 10.8, 4.1, 5.7, 6.6, 9.4, 5]);
   });
 
-  it.skip('should be able to handle an incomplete data for a selected 7 days', () => {
-    const lessThanAWeek = sleepRepo.getSevenDays(1, '2019/06/10', 'hoursSlept');
+  it('should be able to handle an incomplete data for a selected 7 days', () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const lessThanAWeek = sleepRepo.getSevenDays('2019/06/10', 'hoursSlept');
 
     expect(lessThanAWeek).to.deep.equal([9.4, 5, 5]);
   });
 
-  it.skip("should be able to return a week's worth of sleep quality scores", () => {
-    const weekOfScores = sleepRepo.getSevenDays(
-      1,
-      '2019/06/15',
-      'sleepQuality'
-    );
+  it("should be able to return a week's worth of sleep quality scores", () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const weekOfScores = sleepRepo.getSevenDays('2019/06/15', 'sleepQuality');
 
     expect(weekOfScores).to.deep.equal([2.2, 4.7, 3.6, 2.4, 4.4, 4.4, 2.5]);
   });
 
-  it.skip('should be able to handle an incomplete data for a selected 7 days', () => {
-    const lessThanAWeek = sleepRepo.getSevenDays(
-      1,
-      '2019/06/10',
-      'sleepQuality'
-    );
+  it('should be able to handle an incomplete data for a selected 7 days', () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const lessThanAWeek = sleepRepo.getSevenDays('2019/06/10', 'sleepQuality');
 
     expect(lessThanAWeek).to.deep.equal([4.4, 2.5, 3.6]);
   });
 
-  it.skip('should be able to return the average sleep quality of all user over all time', () => {
+  it('should be able to return the average sleep quality of all user over all time', () => {
     const everyoneAvg = sleepRepo.getAvgSleepForAll();
 
     expect(everyoneAvg).to.equal(7.1);
