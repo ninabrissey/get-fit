@@ -35,7 +35,8 @@ class AllTimeHydration {
       const i = this.individualHydration.findIndex(
         (element) => element.date === date
       );
-      return this.individualHydration.slice(i, i + 7);
+      ///need to change test to pass new logic below
+      return this.individualHydration.slice(i - 6, i + 1);
     }
   }
 }
