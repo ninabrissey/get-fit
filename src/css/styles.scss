@@ -1,6 +1,6 @@
-/* body {
-  height: 100vh;
-} */
+body {
+  background: #e0e0e0;
+}
 
 .wrapper {
   height: 90vh;
@@ -11,7 +11,9 @@
 }
 
 section {
-  background-color: royalblue;
+  border-radius: 22px;
+  background: #e0e0e0;
+  box-shadow: 16px 16px 29px #898989, -16px -16px 29px #ffffff;
 }
 
 .user-info {
@@ -19,6 +21,11 @@ section {
 }
 
 .daily-water {
+}
+
+.daily-water-chart-container {
+  height: 90%;
+  width: 90%;
 }
 
 .sleep-report {
