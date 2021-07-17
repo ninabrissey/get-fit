@@ -38,6 +38,7 @@ import {
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/running.png';
+import AllTimeHydration from './AllTimeHydration';
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -45,6 +46,7 @@ import './images/running.png';
 
 let currentUser;
 let userRepo;
+let hydrationStats;
 //let fetchSleepData;
 
 // query selectors 👇
@@ -56,23 +58,69 @@ const strideLength = document.getElementById('strideLength');
 const friend1 = document.getElementById('friend1');
 const friend2 = document.getElementById('friend2');
 const friend3 = document.getElementById('friend3');
+const dailyWater = document.getElementById('dailyWater');
+const weeklyWater = document.getElementById('weeklyWater');
+const sleepReport = document.getElementById('sleepReport');
+const weeklySleep = document.getElementById('weeklySleep');
+const dailyActivity = document.getElementById('dailyActivity');
+const weeklyActivity = document.getElementById('weeklyActivity');
+const extraBox = document.getElementById('extraBox');
 
 // event listeners 👇
 window.addEventListener('load', loadUserData);
 
 // functions: handlers and helpers 👇
+//function that randomly selects currentUser
+
 function loadUserData() {
   getAllData().then((data) => {
     //this is retrieving the array of data array from Promise.all in apiCalls.js
-    getCurrentUser(data[0].userData);
+    const userID = getRandomUser(data[0].userData);
+
+    getCurrentUser(data[0].userData, userID);
+    instantiateHydration(data[1].hydrationData, userID);
+
+    // reportDailyHydration('2020/01/22');
+
     displayProfileBox(); //DOM
+    displayDailyWater('2020/01/22');
   });
 }
+console.log('line89', currentUser);
 
-function getCurrentUser(parsedData) {
+function getRandomUser(userArray) {
+  const numOfUsers = userArray.length;
+  return Math.ceil(Math.random() * numOfUsers);
+  //iterator to got through data[0].userData and count all of the unique ID's
+}
+
+function getCurrentUser(parsedData, user) {
   userRepo = new UserRepository(parsedData);
   userRepo.instantiateAllUsers();
-  currentUser = userRepo.getUserInfo(45);
+  currentUser = userRepo.getUserInfo(user);
+}
+
+// function to getWeeklyWaterReport
+
+function instantiateHydration(parsedData, user) {
+  hydrationStats = new AllTimeHydration(parsedData);
+  hydrationStats.getIndividualHydration(user);
+}
+
+function reportDailyHydration(date) {
+  const day = hydrationStats.individualHydration.find(
+    (element) => element.date === date
+  );
+  const avg = hydrationStats.calculateAvgOunces();
+
+  return { ounces: day.numOunces, average: avg };
+}
+
+// DOM manipulation functions
+
+function displayDailyWater(date) {
+  const report = reportDailyHydration(date);
+  dailyWater.innerText = `Date: ${date} Ounces: ${report.ounces} Average: ${report.average}`;
 }
 
 function displayProfileBox() {
