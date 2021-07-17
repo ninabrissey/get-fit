@@ -4,6 +4,8 @@
 import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
+import AllTimeHydration from './AllTimeHydration';
+import SleepRepository from './SleepRepository';
 import getAllData from './apiCalls';
 // import domUpdates from './domUpdates';
 
@@ -38,7 +40,6 @@ import {
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/running.png';
-import AllTimeHydration from './AllTimeHydration';
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -47,6 +48,7 @@ import AllTimeHydration from './AllTimeHydration';
 let currentUser;
 let userRepo;
 let hydrationStats;
+let sleepStats;
 //let fetchSleepData;
 
 // query selectors 👇
@@ -79,11 +81,11 @@ function loadUserData() {
 
     getCurrentUser(data[0].userData, userID);
     instantiateHydration(data[1].hydrationData, userID);
-
-    // reportDailyHydration('2020/01/22');
-
+    instantiateSleep(data[2].sleepData, userID);
+    console.log(sleepStats);
     displayProfileBox(); //DOM
-    displayDailyWater('2020/01/22');
+    displayDailyHydration('2020/01/22');
+    displayWeeklyHydration('2020/01/22');
   });
 }
 console.log('line89', currentUser);
@@ -94,18 +96,25 @@ function getRandomUser(userArray) {
   //iterator to got through data[0].userData and count all of the unique ID's
 }
 
+//
+
 function getCurrentUser(parsedData, user) {
   userRepo = new UserRepository(parsedData);
   userRepo.instantiateAllUsers();
   currentUser = userRepo.getUserInfo(user);
 }
 
-// function to getWeeklyWaterReport
-
 function instantiateHydration(parsedData, user) {
   hydrationStats = new AllTimeHydration(parsedData);
   hydrationStats.getIndividualHydration(user);
 }
+
+function instantiateSleep(parsedData, user) {
+  sleepStats = new SleepRepository(parsedData);
+  sleepStats.getIndividualsSleep(user);
+}
+
+//
 
 function reportDailyHydration(date) {
   const day = hydrationStats.individualHydration.find(
@@ -116,11 +125,20 @@ function reportDailyHydration(date) {
   return { ounces: day.numOunces, average: avg };
 }
 
+function reportWeeklyHydration(date) {
+  return hydrationStats.getWeeklyHydration(date);
+}
+
 // DOM manipulation functions
 
-function displayDailyWater(date) {
+function displayDailyHydration(date) {
   const report = reportDailyHydration(date);
   dailyWater.innerText = `Date: ${date} Ounces: ${report.ounces} Average: ${report.average}`;
+}
+
+function displayWeeklyHydration(date) {
+  const report = reportWeeklyHydration(date);
+  weeklyWater.innerText = JSON.stringify(report);
 }
 
 function displayProfileBox() {

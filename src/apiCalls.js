@@ -10,8 +10,14 @@ const getHydration = () => {
   );
 };
 
+const getSleep = () => {
+  return fetch('http://localhost:3001/api/v1/sleep').then((response) =>
+    response.json()
+  );
+};
+
 const getAllData = () => {
-  return Promise.all([getData(), getHydration()]);
+  return Promise.all([getData(), getHydration(), getSleep()]);
 };
 
 export default getAllData;
