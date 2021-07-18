@@ -40,7 +40,7 @@ describe('AllTimeHydration', () => {
 
   it("should start with an array of all user's hydration data", () => {
     expect(allTimeHydration.allUsersHydration).to.be.a('array');
-    expect(allTimeHydration.allUsersHydration[7].numOunces).to.equal(28);
+    expect(allTimeHydration.allUsersHydration[7].numOunces).to.equal(30);
   });
 
   it('should start with an empty individual user hydration array', () => {
@@ -87,8 +87,8 @@ describe('AllTimeHydration', () => {
 
     expect(weeksHydration[1]).to.deep.equal({
       id: 2,
-      date: '2019/06/13',
-      numOunces: 100,
+      date: '2019/06/09',
+      numOunces: 20,
     });
   });
 
@@ -124,7 +124,7 @@ describe('AllTimeHydration', () => {
     allTimeHydration.getIndividualHydration(1);
 
     const lessThanWeekHydration =
-      allTimeHydration.getWeeklyHydration('2019/06/14');
+      allTimeHydration.getWeeklyHydration('2019/06/13');
 
     expect(lessThanWeekHydration).to.deep.equal([
       {
@@ -151,6 +151,6 @@ describe('AllTimeHydration', () => {
     const lessThanWeekHydration =
       allTimeHydration.getWeeklyHydration('2019/06/08');
 
-    expect(lessThanWeekHydration[1].numOunces).to.deep.equal(87);
+    expect(lessThanWeekHydration[1].numOunces).to.deep.equal(36);
   });
 });
