@@ -29,15 +29,14 @@ class AllTimeHydration {
   }
 
   getWeeklyHydration(date) {
-    if (this.individualHydration.length <= 7) {
-      return this.individualHydration;
-    } else {
-      const i = this.individualHydration.findIndex(
-        (element) => element.date === date
-      );
-      ///need to change test to pass new logic below
-      return this.individualHydration.slice(i - 6, i + 1);
+    const i = this.individualHydration.findIndex(
+      (element) => element.date === date
+    );
+
+    if (i < 7) {
+      return this.individualHydration.slice(0, i + 1);
     }
+    return this.individualHydration.slice(i - 6, i + 1);
   }
 }
 

@@ -61,9 +61,12 @@ function loadUserData() {
     getCurrentUser(data[0].userData, userID);
     instantiateHydration(data[1].hydrationData, userID);
     instantiateSleep(data[2].sleepData, userID);
+
     displayProfileBox(); //DOM
     displayDailyHydration('2020/01/22');
     displayWeeklyHydration('2020/01/22');
+    displayDailySleepStats('2020/01/19');
+    displayWeeklySleep('2020/01/19');
   });
 }
 
@@ -72,7 +75,7 @@ function getRandomUser(userArray) {
   return Math.ceil(Math.random() * numOfUsers);
 }
 
-//
+/* INSTANTIATIONS */
 
 function getCurrentUser(parsedData, user) {
   userRepo = new UserRepository(parsedData);
@@ -90,7 +93,7 @@ function instantiateSleep(parsedData, user) {
   sleepStats.getIndividualsSleep(user);
 }
 
-//
+/* REPORTS */
 
 function reportDailyHydration(date) {
   const day = hydrationStats.individualHydration.find(
@@ -101,22 +104,25 @@ function reportDailyHydration(date) {
   return { ounces: day.numOunces, average: avg };
 }
 
-function reportWeeklyHydration(date) {
-  return hydrationStats.getWeeklyHydration(date);
+function reportNightlySleep(date, property) {
+  const night = sleepStats.individualsSleep.find(
+    (sleep) => sleep.date === date
+  );
+  const avg = sleepStats.calculateAvg(property);
+
+  return { date: date, value: night[property], average: avg };
 }
 
-// DOM manipulation functions
+function reportWeeklySleep(date, property) {
+  const week = sleepStats.getSevenDays(date);
+  const weeksSleep = week.map((day) => {
+    return { date: day.date, [property]: day[property] };
+  });
 
-// function displayDailyHydration(date) {
-//   const report = reportDailyHydration(date);
-//   dailyWater.innerText = `Date: ${date} Ounces: ${report.ounces} Average: ${report.average}`;
-// }
+  return weeksSleep;
+}
 
-// function displayWeeklyHydration(date) {
-//   const report = reportWeeklyHydration(date);
-//   weeklyWater.innerText = JSON.stringify(report);
-// }
-
+/* DOM  */
 function displayProfileBox() {
   userGreeting.innerText = currentUser.getFirstName();
   address.innerText = currentUser.address;
@@ -134,6 +140,32 @@ function displayDailyHydration(date) {
 }
 
 function displayWeeklyHydration(date) {
-  const report = reportWeeklyHydration(date);
+  const report = hydrationStats.getWeeklyHydration(date);
   makeWeeklyHydrationChart(report);
 }
+
+function displayDailySleepStats(date) {
+  // will make to report objects using reportNightlySleep()
+  const hoursSlept = reportNightlySleep(date, 'hoursSlept');
+  const sleepQuality = reportNightlySleep(date, 'sleepQuality');
+
+  console.log('hoursSlept', hoursSlept); //remove after chart
+  console.log('sleepQuality', sleepQuality);
+
+  //sleep vs avg // makeNightsSleepChart(hoursSlept);
+  //score vs avg  // makeNightsQualityChart(sleepQuality)
+}
+
+function displayWeeklySleep(date) {
+  const week = reportWeeklySleep(date, 'hoursSlept');
+  console.log('7 sleep objects', week); //remove after chart is added
+
+  //chart of week's sleep //makeWeeksSleepChart()
+}
+
+// Charts!!
+function makeNightsSleepChart() {}
+
+function makeNigthsQualityChart() {}
+
+function makeWeeksSleepChart() {}
