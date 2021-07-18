@@ -1,23 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
 body {
   background: #e0e0e0;
+  margin: 1.5rem;
+  color: #666666;
+  font-family: Oswald;
+  // overflow: hidden;
 }
 
 .wrapper {
   height: 90vh;
+  border-width: 1.5em;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  gap: 1em;
+  gap: 1.5em;
 }
 
 section {
-  border-radius: 22px;
+  padding: 1em;
+  border-radius: 5px;
   background: #e0e0e0;
   box-shadow: 16px 16px 29px #898989, -16px -16px 29px #ffffff;
 }
 
 .user-info {
   grid-column: 1/3;
+}
+
+.user-info-div {
+  height: 90%;
+  width: 90%;
 }
 
 .daily-water {
@@ -43,4 +56,21 @@ section {
 // styling for icons
 .icon {
   height: 30px;
+}
+
+// tablet responsive design
+@media screen and (max-width: 1023px) {
+}
+
+// mobile responsive design
+@media screen and (max-width: 767px) {
+  body {
+  }
+  .wrapper {
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  section {
+    grid-column: 1/2;
+  }
 }
