@@ -7,36 +7,17 @@ import User from './User';
 import AllTimeHydration from './AllTimeHydration';
 import SleepRepository from './SleepRepository';
 import getAllData from './apiCalls';
+import chartDisplays from './chartDisplays';
+import {
+  makeWeeklyHydrationChart,
+  makeDailyHydrationChart,
+} from './chartDisplays';
 // import domUpdates from './domUpdates';
 
 // An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-import {
-  Chart,
-  ArcElement,
-  LineElement,
-  BarElement,
-  PointElement,
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
-  CategoryScale,
-  LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
-  TimeScale,
-  TimeSeriesScale,
-  Decimation,
-  Filler,
-  Legend,
-  Title,
-  Tooltip,
-} from 'chart.js';
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/running.png';
@@ -72,8 +53,6 @@ const extraBox = document.getElementById('extraBox');
 window.addEventListener('load', loadUserData);
 
 // functions: handlers and helpers 👇
-//function that randomly selects currentUser
-
 function loadUserData() {
   getAllData().then((data) => {
     //this is retrieving the array of data array from Promise.all in apiCalls.js
@@ -82,18 +61,15 @@ function loadUserData() {
     getCurrentUser(data[0].userData, userID);
     instantiateHydration(data[1].hydrationData, userID);
     instantiateSleep(data[2].sleepData, userID);
-    console.log(sleepStats);
     displayProfileBox(); //DOM
     displayDailyHydration('2020/01/22');
     displayWeeklyHydration('2020/01/22');
   });
 }
-console.log('line89', currentUser);
 
 function getRandomUser(userArray) {
   const numOfUsers = userArray.length;
   return Math.ceil(Math.random() * numOfUsers);
-  //iterator to got through data[0].userData and count all of the unique ID's
 }
 
 //
@@ -131,15 +107,15 @@ function reportWeeklyHydration(date) {
 
 // DOM manipulation functions
 
-function displayDailyHydration(date) {
-  const report = reportDailyHydration(date);
-  dailyWater.innerText = `Date: ${date} Ounces: ${report.ounces} Average: ${report.average}`;
-}
+// function displayDailyHydration(date) {
+//   const report = reportDailyHydration(date);
+//   dailyWater.innerText = `Date: ${date} Ounces: ${report.ounces} Average: ${report.average}`;
+// }
 
-function displayWeeklyHydration(date) {
-  const report = reportWeeklyHydration(date);
-  weeklyWater.innerText = JSON.stringify(report);
-}
+// function displayWeeklyHydration(date) {
+//   const report = reportWeeklyHydration(date);
+//   weeklyWater.innerText = JSON.stringify(report);
+// }
 
 function displayProfileBox() {
   userGreeting.innerText = currentUser.getFirstName();
@@ -149,5 +125,15 @@ function displayProfileBox() {
   strideLength.innerText = currentUser.strideLength;
   friend1.innerText = userRepo.allUsers[currentUser.friends[0]].getFirstName();
   friend2.innerText = userRepo.allUsers[currentUser.friends[1]].getFirstName();
-  friend3.innerText = userRepo.allUsers[currentUser.friends[2]].getFirstName();
+  //friend3.innerText = userRepo.allUsers[currentUser.friends[2]].getFirstName();
+}
+
+function displayDailyHydration(date) {
+  const report = reportDailyHydration(date);
+  makeDailyHydrationChart(report);
+}
+
+function displayWeeklyHydration(date) {
+  const report = reportWeeklyHydration(date);
+  makeWeeklyHydrationChart(report);
 }
