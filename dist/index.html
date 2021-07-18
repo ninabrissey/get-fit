@@ -8,6 +8,7 @@
   <body>
     <h1>Get Fit</h1>
     <div class="wrapper">
+      
       <section class="user-info">
         <div class="user-info-div">
           <h2 id="userGreeting">Hello User</h2>
@@ -17,6 +18,7 @@
             <img class ="icon"src="./images/running.png" alt="sneaker">
             <p id="stepGoal">Steps</p>
           </div>
+          <i class="fa-duotone fa-shoe-prints"></i>
           <p id="strideLength">Stride Length</p>
           <div>
             <p id="friend1">Friend 1</p>
@@ -25,6 +27,7 @@
           </div>
         </div>
       </section>
+
       <section class="daily-water" id="dailyWater">
         <h2>Water Intake</h2>
         <div class="daily-water-chart-container">
@@ -32,13 +35,26 @@
         </div>
       </section>
       <section class="weekly-water" id="weeklyWater">
-        <canvas id="weeklyWaterChart"></canvas>
+        <h2>Weekly Water Intake</h2>
+        <div class="weekly-water-chart-container">
+          <canvas id="weeklyWaterChart"></canvas>
+        </div>
       </section>
-      <section class="sleep-report" id="sleepReport">sleep-report</section>
-      <section class="weekly-sleep" id="weeklySleep">weeksleep</section>
-      <section class="daily-activity" id="dailyActivity">dailyActivity</section>
-      <section class="weekly-activity" id="weeklyActivity">weeklyActivity</section>
-      <section class="extra-box" id="extraBox">extraBox</section>
+      <section class="sleep-report" id="sleepReport">
+        <h2>Sleep Report</h2>
+      </section>
+      <section class="weekly-sleep" id="weeklySleep">
+        <h2>Weekly Sleep Report</h2>
+      </section>
+      <section class="daily-activity" id="dailyActivity">
+        <h2>Daily Activity</h2>
+      </section>
+      <section class="weekly-activity" id="weeklyActivity">
+        <h2>Weekly Actvity</h2>
+      </section>
+      <section class="extra-box" id="extraBox">
+        <h2>Extra Box</h2>
+      </section>
   </div>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
