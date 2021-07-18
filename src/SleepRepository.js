@@ -32,12 +32,13 @@ class SleepRepository {
     return Number((totaled / this.individualsSleep.length).toFixed(1));
   }
 
-  getSevenDays(date, property) {
-    const dateIndex = this.individualsSleep.findIndex(
-      (sleep) => sleep.date === date
-    );
-    const sevenDays = this.individualsSleep.slice(dateIndex, dateIndex + 7);
-    return sevenDays.map((sleep) => sleep[property]);
+  getSevenDays(date) {
+    const i = this.individualsSleep.findIndex((sleep) => sleep.date === date);
+
+    if (i < 7) {
+      return this.individualsSleep.slice(0, i + 1);
+    }
+    return this.individualsSleep.slice(i - 6, i + 1);
   }
 
   getAvgSleepForAll() {
