@@ -61,9 +61,12 @@ function loadUserData() {
     getCurrentUser(data[0].userData, userID);
     instantiateHydration(data[1].hydrationData, userID);
     instantiateSleep(data[2].sleepData, userID);
+
     displayProfileBox(); //DOM
     displayDailyHydration('2020/01/22');
     displayWeeklyHydration('2020/01/22');
+    displayDailySleepStats('2019/06/15');
+    //displayWeeklySleep('2019/06/15')
   });
 }
 
@@ -72,7 +75,7 @@ function getRandomUser(userArray) {
   return Math.ceil(Math.random() * numOfUsers);
 }
 
-//
+/* INSTANTIATIONS */
 
 function getCurrentUser(parsedData, user) {
   userRepo = new UserRepository(parsedData);
@@ -101,22 +104,22 @@ function reportDailyHydration(date) {
   return { ounces: day.numOunces, average: avg };
 }
 
-function reportWeeklyHydration(date) {
-  return hydrationStats.getWeeklyHydration(date);
+// function reportWeeklyHydration(date) {
+//   return hydrationStats.getWeeklyHydration(date);
+// }
+
+function reportNightlySleep(date, property) {
+  const night = sleepStats.individualsSleep.find(
+    (sleep) => sleep.date === date
+  );
+  const avg = sleepStats.calculateAvg(property);
+
+  return { date: date, value: night[property], average: avg };
 }
 
-// DOM manipulation functions
+function reportWeeksSleep(date) {}
 
-// function displayDailyHydration(date) {
-//   const report = reportDailyHydration(date);
-//   dailyWater.innerText = `Date: ${date} Ounces: ${report.ounces} Average: ${report.average}`;
-// }
-
-// function displayWeeklyHydration(date) {
-//   const report = reportWeeklyHydration(date);
-//   weeklyWater.innerText = JSON.stringify(report);
-// }
-
+/* DOM Manipulation */
 function displayProfileBox() {
   userGreeting.innerText = currentUser.getFirstName();
   address.innerText = currentUser.address;
@@ -134,6 +137,28 @@ function displayDailyHydration(date) {
 }
 
 function displayWeeklyHydration(date) {
-  const report = reportWeeklyHydration(date);
+  const report = hydrationStats.getWeeklyHydration(date);
   makeWeeklyHydrationChart(report);
 }
+
+/* ---------- */
+function displayDailySleepStats(date) {
+  // will make to report objects using reportNightlySleep()
+  const hoursSlept = reportNightlySleep(date, 'hoursSlept');
+  const sleepQuality = reportNightlySleep(date, 'sleepQuality');
+
+  console.log(hoursSlept); //remove after chart added
+  console.log(sleepQuality);
+  //make 2 charts
+  //one for night's sleep vs avg // makeNightsSleepChart(hoursSlept);
+  //one for night's score vs avg  // makeNightsQualityChart(sleepQuality)
+}
+
+function displayWeeklySleep(date) {
+  // will use the getSevenDays method to
+}
+
+// Charts!!
+function makeNightsSleepChart() {}
+
+function makeNigthsQualityChart() {}
