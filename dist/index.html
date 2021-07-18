@@ -2,24 +2,27 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Get Fit</title>
   </head>
   <body>
     <h1>Get Fit</h1>
     <div class="wrapper">
       <section class="user-info">
-        <h2 id="userGreeting">Hello User</h2>
-        <p id="address">Address</p>
-        <p id="email">Email</p>
-        <div>
-          <img class ="icon"src="./images/running.png" alt="sneaker">
-          <p id="stepGoal">Steps</p>
-        </div>
-        <p id="strideLength">Stride Length</p>
-        <div>
-         <p id="friend1">Friend 1</p>
-         <p id="friend2">Friend 2</p>
-         <p id="friend3">Friend 3</p>
+        <div class="user-info-div">
+          <h2 id="userGreeting">Hello User</h2>
+          <p id="address">Address</p>
+          <p id="email">Email</p>
+          <div>
+            <img class ="icon"src="./images/running.png" alt="sneaker">
+            <p id="stepGoal">Steps</p>
+          </div>
+          <p id="strideLength">Stride Length</p>
+          <div>
+            <p id="friend1">Friend 1</p>
+            <p id="friend2">Friend 2</p>
+            <p id="friend3">Friend 3</p>
+          </div>
         </div>
       </section>
       <section class="daily-water" id="dailyWater">
@@ -31,11 +34,11 @@
       <section class="weekly-water" id="weeklyWater">
         <canvas id="weeklyWaterChart"></canvas>
       </section>
-      <section class="sleep-report" id="sleepReport">section 4</section>
-      <section class="weekly-sleep" id="weeklySleep">section 5</section>
-      <section class="daily-activity" id="dailyActivity">section 6</section>
-      <section class="weekly-activity" id="weeklyActivity">section 7</section>
-      <section class="extra-box" id="extraBox">section 8</section>
+      <section class="sleep-report" id="sleepReport">sleep-report</section>
+      <section class="weekly-sleep" id="weeklySleep">weeksleep</section>
+      <section class="daily-activity" id="dailyActivity">dailyActivity</section>
+      <section class="weekly-activity" id="weeklyActivity">weeklyActivity</section>
+      <section class="extra-box" id="extraBox">extraBox</section>
   </div>
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
