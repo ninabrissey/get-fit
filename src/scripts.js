@@ -11,6 +11,9 @@ import chartDisplays from './chartDisplays';
 import {
   makeWeeklyHydrationChart,
   makeDailyHydrationChart,
+  makeNightsSleepChart,
+  makeNightsQualityChart,
+  makeWeeksSleepChart,
 } from './chartDisplays';
 // import domUpdates from './domUpdates';
 
@@ -129,8 +132,8 @@ function displayProfileBox() {
   email.innerText = currentUser.email;
   stepGoal.innerText = currentUser.dailyStepGoal;
   strideLength.innerText = currentUser.strideLength;
-  friend1.innerText = userRepo.allUsers[currentUser.friends[0]].getFirstName();
-  friend2.innerText = userRepo.allUsers[currentUser.friends[1]].getFirstName();
+  // friend1.innerText = userRepo.allUsers[currentUser.friends[0]].getFirstName();
+  // friend2.innerText = userRepo.allUsers[currentUser.friends[1]].getFirstName();
   //friend3.innerText = userRepo.allUsers[currentUser.friends[2]].getFirstName();
 }
 
@@ -152,20 +155,21 @@ function displayDailySleepStats(date) {
   console.log('hoursSlept', hoursSlept); //remove after chart
   console.log('sleepQuality', sleepQuality);
 
-  //sleep vs avg // makeNightsSleepChart(hoursSlept);
-  //score vs avg  // makeNightsQualityChart(sleepQuality)
+  //sleep vs avg //
+  makeNightsSleepChart(hoursSlept);
+  makeNightsQualityChart(sleepQuality);
 }
 
 function displayWeeklySleep(date) {
   const week = reportWeeklySleep(date, 'hoursSlept');
   console.log('7 sleep objects', week); //remove after chart is added
 
-  //chart of week's sleep //makeWeeksSleepChart()
+  makeWeeksSleepChart(week);
 }
 
 // Charts!!
-function makeNightsSleepChart() {}
+// function makeNightsSleepChart() {}
 
-function makeNigthsQualityChart() {}
+// function makeNightsQualityChart() {}
 
-function makeWeeksSleepChart() {}
+// function makeWeeksSleepChart() {}
