@@ -1,4 +1,17 @@
-class Activity {}
+class Activity {
+  constructor(data) {
+    this.id = data.userID;
+    this.date = data.date;
+    this.numSteps = data.numSteps;
+    this.minutesActive = data.minutesActive;
+    this.flightsOfStairs = data.flightsOfStairs;
+  }
 
-//{"userID":1,"date":"2019/06/15","numSteps":3577,"minutesActive":140,"flightsOfStairs":16}
+  calculateMiles(stride) {
+    const miles = (this.numSteps * stride) / 5280;
+    console.log(Math.round(miles * 100) / 100);
+    return Math.round(miles * 100) / 100;
+  }
+}
+
 export default Activity;
