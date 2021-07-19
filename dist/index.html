@@ -30,7 +30,9 @@
       <section class="daily-water boxes" id="dailyWater">
         <h2>Water Intake</h2>
         <div class="daily-water-chart-container">
-          <canvas class="daily-water-chart" id="dailyWaterChart"></canvas>
+          
+
+          <canvas class="daily-water-chart" id="dailyWaterChart" width="100" height="100" style="display: block; box-sizing: border-box; height: 50px; width: 100px;"></canvas>
         </div>
       </section>
       <section class="weekly-water boxes" id="weeklyWater">
@@ -56,6 +58,28 @@
       </section>
       <section class="daily-activity boxes" id="dailyActivity">
         <h2>Daily Activity</h2>
+        <div class="daily-activity-container" id='dailyActivityContainer'>
+          
+          <!-- 👇remove all of this and insert the inner for id='dailyActivityContainer' -->
+          <div class="steps-container daily-activity-div">
+            <img class="icon" src="./images/footsteps-silhouette-variant.png" alt="foot steps">
+            <h3>10,000 steps</h3>
+          </div>
+          <div class="minutes-containter daily-activity-div">
+            <img class="icon" src="./images/minutes.png" alt="stop watch">
+            <h3>1.9 hours</h3>
+          </div>
+          <div class="miles-container daily-activity-div">
+            <img class="icon" src="./images/miles.png" alt="miles tile">
+            <h3>2.8 miles</h3>
+          </div>
+          <div class="flights-container daily-activity-div">
+            <img class="icon" src="./images/stairs.png" alt="stairs">
+            <h3>36 flights</h3>
+          </div> 
+          <!-- 👆remove all of this and insert the inner for id='dailyActivityContainer' -->
+          
+        </div>
       </section>
       <section class="weekly-activity boxes" id="weeklyActivity">
         <h2>Weekly Actvity</h2>

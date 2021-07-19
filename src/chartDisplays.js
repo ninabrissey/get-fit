@@ -5,11 +5,13 @@ export function makeDailyHydrationChart(dayData) {
   const config = {
     type: 'doughnut',
     data: {
-      labels: ['Water Intake', 'Water Needed'],
+      // responsive: true,
+      labels: ['Water Goal', 'Water Needed'],
       datasets: [
         {
+          // responsive: true,
           label: "Daily Water Intake - (day's date)",
-          backgroundColor: ['#FF2B55', '#FF5B28'],
+          backgroundColor: ['#4CDB63', '#2BBFAB'],
           data: [100, dayData.ounces],
         },
       ],
@@ -38,6 +40,7 @@ export function makeWeeklyHydrationChart(weekOfWater) {
         ],
         borderColor: 'white',
         borderWidth: 1,
+        borderRadius: Number.MAX_VALUE,
       },
     ],
   };
@@ -64,13 +67,13 @@ export function makeNightsSleepChart(sleep) {
         label: 'Last Night',
         data: [sleep.value],
         borderColor: 'white',
-        backgroundColor: 'black',
+        backgroundColor: '#0391FA',
       },
       {
         label: 'Average',
         data: [sleep.average],
         borderColor: 'white',
-        backgroundColor: 'red',
+        backgroundColor: '#6542DC',
       },
     ],
   };
@@ -115,13 +118,13 @@ export function makeNightsQualityChart(sleep) {
         label: 'Last Night',
         data: [sleep.value],
         borderColor: 'white',
-        backgroundColor: 'black',
+        backgroundColor: '#0391FA',
       },
       {
         label: 'Average',
         data: [sleep.average],
         borderColor: 'white',
-        backgroundColor: 'red',
+        backgroundColor: '#6542DC',
       },
     ],
   };
@@ -174,6 +177,7 @@ export function makeWeeksSleepChart(weekOfSleep) {
         ],
         borderColor: 'white',
         borderWidth: 1,
+        borderRadius: Number.MAX_VALUE,
       },
     ],
   };
