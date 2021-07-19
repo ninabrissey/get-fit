@@ -1,62 +1,70 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Get Fit</title>
   </head>
   <body>
     <h1>Get Fit</h1>
     <div class="wrapper">
-      
       <section class="user-info">
         <div class="user-info-div">
           <h2 id="userGreeting">Hello User</h2>
           <p id="address">Address</p>
           <p id="email">Email</p>
           <div>
-            <img class ="icon"src="./images/running.png" alt="sneaker">
+            <img class="icon" src="./images/running.png" alt="sneaker" />
             <p id="stepGoal">Steps</p>
           </div>
           <i class="fa-duotone fa-shoe-prints"></i>
           <p id="strideLength">Stride Length</p>
           <div>
-            <p id="friend1">Friend 1</p>
+            <!-- <p id="friend1">Friend 1</p>
             <p id="friend2">Friend 2</p>
-            <p id="friend3">Friend 3</p>
+            <p id="friend3">Friend 3</p> -->
           </div>
         </div>
       </section>
 
-      <section class="daily-water" id="dailyWater">
+      <section class="daily-water boxes" id="dailyWater">
         <h2>Water Intake</h2>
         <div class="daily-water-chart-container">
           <canvas class="daily-water-chart" id="dailyWaterChart"></canvas>
         </div>
       </section>
-      <section class="weekly-water" id="weeklyWater">
+      <section class="weekly-water boxes" id="weeklyWater">
         <h2>Weekly Water Intake</h2>
         <div class="weekly-water-chart-container">
           <canvas id="weeklyWaterChart"></canvas>
         </div>
       </section>
-      <section class="sleep-report" id="sleepReport">
+      <section class="sleep-report boxes" id="sleepReport">
         <h2>Sleep Report</h2>
+        <div class="sleep-chart-container">
+          <canvas id="sleepChart"></canvas>
+        </div>
+        <div class="sleep-score-chart-container">
+          <canvas id="sleepScoreChart"></canvas>
+        </div>
       </section>
-      <section class="weekly-sleep" id="weeklySleep">
+      <section class="weekly-sleep boxes" id="weeklySleep">
         <h2>Weekly Sleep Report</h2>
+        <div class="weekly-sleep-chart-container">
+          <canvas id="weeklySleepChart"></canvas>
+        </div>
       </section>
-      <section class="daily-activity" id="dailyActivity">
+      <section class="daily-activity boxes" id="dailyActivity">
         <h2>Daily Activity</h2>
       </section>
-      <section class="weekly-activity" id="weeklyActivity">
+      <section class="weekly-activity boxes" id="weeklyActivity">
         <h2>Weekly Actvity</h2>
       </section>
-      <section class="extra-box" id="extraBox">
+      <section class="extra-box boxes" id="extraBox">
         <h2>Extra Box</h2>
       </section>
-  </div>
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    </div>
+    <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
     <script src="bundle.js"></script>
   </body>
 </html>
