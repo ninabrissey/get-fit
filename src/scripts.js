@@ -15,6 +15,8 @@ import {
   makeNightsQualityChart,
   makeWeeksSleepChart,
 } from './chartDisplays';
+
+import activityData from '.data/activityData';
 // import domUpdates from './domUpdates';
 
 // An example of how you tell webpack to use a CSS file
@@ -117,7 +119,7 @@ function reportNightlySleep(date, property) {
   );
   const avg = sleepStats.calculateAvg(property);
 
-  return { date: date, value: night[property], average: avg };
+  return { date: date.slice(6, 10), value: night[property], average: avg };
 }
 
 function reportWeeklySleep(date, property) {
@@ -131,7 +133,7 @@ function reportWeeklySleep(date, property) {
 
 /* DOM  */
 function displayProfileBox() {
-  userGreeting.innerText = currentUser.getFirstName();
+  userGreeting.innerText = `Hi, ${currentUser.getFirstName()}!`;
   address.innerText = currentUser.address;
   email.innerText = currentUser.email;
   stepGoal.innerText = currentUser.dailyStepGoal;
