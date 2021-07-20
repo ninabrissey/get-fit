@@ -19,8 +19,8 @@ p {
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
   gap: 1.5em;
 }
 
@@ -62,6 +62,9 @@ section {
 .daily-water-chart-container {
   height: 90%;
   width: 90%;
+  position: relative;
+  margin-top: 8%;
+  margin-left: 5%;
 }
 
 .weekly-water {
@@ -73,18 +76,40 @@ section {
 .weekly-water-chart-container {
   height: 90%;
   width: 90%;
+  position: relative;
+  margin-bottom: 5%;
+  margin-left: 4.5%;
 }
 
 .sleep-report {
   -ms-grid-row: 2;
-  -ms-grid-row-span: 2;
-  grid-row: 2/4;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  position: relative;
+}
+
+.sleep-chart-container .sleep-score-chart-container {
+  position: relative;
+  height: 45%;
+  width: 90%;
+}
+
+.weekly-sleep {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2/4;
+}
+
+.weekly-sleep-container {
+  height: 90%;
+  width: 90%;
+  position: relative;
 }
 
 .daily-activity {
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 2;
-  grid-column: 3/5;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-column: 4/5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -97,15 +122,12 @@ section {
 }
 
 .daily-activity-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
 }
 
 .daily-activity-div {
@@ -124,52 +146,64 @@ section {
           align-items: center;
 }
 
-.weekly-activity {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 2;
-  grid-column: 2/4;
-}
-
 .icon {
-  height: 30px;
+  height: 7em;
 }
 
 @media screen and (max-width: 1023px) {
   .wrapper {
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
-    -ms-grid-rows: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
   }
-  .user-info .daily-water {
+  .user-info {
     -ms-grid-row: 1;
     -ms-grid-row-span: 1;
     grid-row: 1/2;
-  }
-  .weekly-water .sleep-report {
-    -ms-grid-row: 2;
-    -ms-grid-row-span: 1;
-    grid-row: 2/3;
-  }
-  .weekly-sleep .daily-activity {
-    -ms-grid-row: 3;
-    -ms-grid-row-span: 1;
-    grid-row: 3/4;
-  }
-  .weekly-activity .extra-box {
-    -ms-grid-row: 4;
-    -ms-grid-row-span: 1;
-    grid-row: 4/5;
-  }
-  .user-info .weekly-water .weekly-sleep .weekly-activity {
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
     grid-column: 1/2;
   }
-  .daily-water .sleep-report .daily-activity .extra-box {
+  .daily-water {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    grid-row: 1/2;
     -ms-grid-column: 2;
     -ms-grid-column-span: 1;
     grid-column: 2/3;
+  }
+  .weekly-water {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
+  }
+  .sleep-report {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    grid-row: 2/3;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+  }
+  .weekly-sleep {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    grid-row: 3/4;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+  }
+  .daily-activity {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    grid-row: 3/4;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1/2;
   }
 }
 
@@ -177,8 +211,8 @@ section {
   .wrapper {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
-    -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
   .user-info {
     -ms-grid-row: 1;
@@ -209,16 +243,6 @@ section {
     -ms-grid-row: 6;
     -ms-grid-row-span: 1;
     grid-row: 6/7;
-  }
-  .weekly-activity {
-    -ms-grid-row: 7;
-    -ms-grid-row-span: 1;
-    grid-row: 7/8;
-  }
-  .extra-box {
-    -ms-grid-row: 8;
-    -ms-grid-row-span: 1;
-    grid-row: 8/9;
   }
   .boxes {
     -ms-grid-column: 1;
