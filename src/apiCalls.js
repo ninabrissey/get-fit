@@ -16,8 +16,14 @@ const getSleep = () => {
   );
 };
 
+const getActivity = () => {
+  return fetch('http://localhost:3001/api/v1/activity').then((response) =>
+    response.json()
+  );
+};
+
 const getAllData = () => {
-  return Promise.all([getData(), getHydration(), getSleep()]);
+  return Promise.all([getData(), getHydration(), getSleep(), getActivity()]);
 };
 
 export default getAllData;
