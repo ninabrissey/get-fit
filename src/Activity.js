@@ -9,7 +9,6 @@ class Activity {
 
   calculateMiles(stride) {
     const miles = (this.numSteps * stride) / 5280;
-    console.log(Math.round(miles * 100) / 100);
     return Math.round(miles * 100) / 100;
   }
 }
