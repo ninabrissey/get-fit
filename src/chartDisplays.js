@@ -5,11 +5,13 @@ export function makeDailyHydrationChart(dayData) {
   const config = {
     type: 'doughnut',
     data: {
-      labels: ['Water Intake', 'Water Needed'],
+      // responsive: true,
+      labels: ['Water Goal', 'Water Needed'],
       datasets: [
         {
+          // responsive: true,
           label: "Daily Water Intake - (day's date)",
-          backgroundColor: ['#FF2B55', '#FF5B28'],
+          backgroundColor: ['#4CDB63', '#2BBFAB'],
           data: [100, dayData.ounces],
         },
       ],
@@ -28,16 +30,17 @@ export function makeWeeklyHydrationChart(weekOfWater) {
         label: 'Ounces of Water Per Day',
         data: weekOfWater.map((day) => day.numOunces),
         backgroundColor: [
-          '#4CDB63',
-          '#2BBFAB',
-          '#0391FA',
-          '#6542DC',
-          '#FF2B55',
-          '#FF5B28',
           '#FEB904',
+          '#FF5B28',
+          '#FF2B55',
+          '#6542DC',
+          '#0391FA',
+          '#2BBFAB',
+          '#4CDB63',
         ],
         borderColor: 'white',
         borderWidth: 1,
+        borderRadius: Number.MAX_VALUE,
       },
     ],
   };
@@ -61,16 +64,16 @@ export function makeNightsSleepChart(sleep) {
     labels: [''],
     datasets: [
       {
-        label: 'Last Night',
+        label: sleep.date,
         data: [sleep.value],
         borderColor: 'white',
-        backgroundColor: 'black',
+        backgroundColor: '#0391FA',
       },
       {
-        label: 'Average',
+        label: 'Avg.',
         data: [sleep.average],
         borderColor: 'white',
-        backgroundColor: 'red',
+        backgroundColor: '#6542DC',
       },
     ],
   };
@@ -112,16 +115,16 @@ export function makeNightsQualityChart(sleep) {
     labels: [''],
     datasets: [
       {
-        label: 'Last Night',
+        label: sleep.date,
         data: [sleep.value],
         borderColor: 'white',
-        backgroundColor: 'black',
+        backgroundColor: '#0391FA',
       },
       {
-        label: 'Average',
+        label: 'Avg.',
         data: [sleep.average],
         borderColor: 'white',
-        backgroundColor: 'red',
+        backgroundColor: '#6542DC',
       },
     ],
   };
@@ -138,7 +141,7 @@ export function makeNightsQualityChart(sleep) {
           borderWidth: 2,
         },
       },
-      // responsive: true,
+      responsive: true,
       plugins: {
         legend: {
           position: 'right',
@@ -164,16 +167,17 @@ export function makeWeeksSleepChart(weekOfSleep) {
         label: 'Hours of Sleep Per Night',
         data: weekOfSleep.map((day) => day.hoursSlept),
         backgroundColor: [
-          '#4CDB63',
-          '#2BBFAB',
-          '#0391FA',
-          '#6542DC',
-          '#FF2B55',
-          '#FF5B28',
           '#FEB904',
+          '#FF5B28',
+          '#FF2B55',
+          '#6542DC',
+          '#0391FA',
+          '#2BBFAB',
+          '#4CDB63',
         ],
         borderColor: 'white',
         borderWidth: 1,
+        borderRadius: Number.MAX_VALUE,
       },
     ],
   };
