@@ -1,12 +1,12 @@
 // scripts 👇
-import userData from './data/users';
 import UserRepository from './UserRepository';
-import User from './User';
 import AllTimeHydration from './AllTimeHydration';
 import SleepRepository from './SleepRepository';
-import getAllData from './apiCalls';
 import ActivityRepository from './ActivityRepository';
+import getAllData from './apiCalls';
 // import domUpdates from './domUpdates';
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 import {
   makeWeeklyHydrationChart,
   makeDailyHydrationChart,
@@ -17,8 +17,6 @@ import {
 
 // styling 👇
 import './css/styles.css';
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
 
 // images 👇
 import './images/running.png';
@@ -39,6 +37,9 @@ let activityStats;
 
 // query selectors 👇
 const userInfo = document.getElementById('userInfo');
+const dailyActivityContainer = document.getElementById(
+  'dailyActivityContainer'
+);
 
 // event listeners 👇
 window.addEventListener('load', loadUserData);
@@ -53,18 +54,21 @@ function loadUserData() {
     instantiateSleep(data[2].sleepData, userID);
     instantiateActivity(data[3].activityData, userID);
 
+    const stats = hydrationStats.individualHydration;
+    const todaysDate = stats[stats.length - 1].date;
+
     displayProfileBox(); //DOM
-    displayDailyHydration('2020/01/22');
-    displayWeeklyHydration('2020/01/22');
-    displayDailySleepStats('2020/01/19');
-    displayWeeklySleep('2020/01/19');
-    displayDailyActivity('2020/01/19');
+    displayDailyHydration(todaysDate);
+    displayWeeklyHydration(todaysDate);
+    displayDailySleepStats(todaysDate);
+    displayWeeklySleep(todaysDate);
+    displayDailyActivity(todaysDate);
   });
 }
 
 const getRandomUser = (userArray) => {
   const numOfUsers = userArray.length;
-  return Math.ceil(Math.random() * numOfUsers);
+  return Math.ceil(Math.random() * numOfUsers - 1);
 };
 
 // instantiations 👇
@@ -119,7 +123,7 @@ const reportWeeklySleep = (date, property) => {
 
 const reportDailyActivity = (date) => {
   const activityInfo = activityStats.getDayActivity(date);
-  console.log(activityInfo);
+  return activityInfo;
 };
 
 // dom updates 👇
@@ -129,13 +133,13 @@ const displayProfileBox = () => {
     friendList.push(firstName);
     return friendList;
   }, []);
-
+  let splitAddress = currentUser.address.split(', ');
   let friendsDisplay = friendNames.join(', ');
 
   userInfo.innerHTML = `
     <div class="user-info-div">
       <h2 class="user-greeting" id="userGreeting">Hi, ${currentUser.getFirstName()}!</h2>
-      <p id="address">Address: ${currentUser.address}</p>
+      <p id="address">Address: ${splitAddress[0]}<br>${splitAddress[1]}</p>
       <p id="email">Email: ${currentUser.email}</p>
       <div class="user-spec">
         <img class="mini-icon" src="./images/footsteps-silhouette-variant.png" alt="foot steps">
@@ -178,4 +182,23 @@ const displayWeeklySleep = (date) => {
 
 const displayDailyActivity = (date) => {
   const activity = reportDailyActivity(date);
+  const miles = activity.calculateMiles(currentUser.strideLength);
+
+  dailyActivityContainer.innerHTML = `
+    <div class="steps-container daily-activity-div">
+      <img class="icon" src="./images/footsteps-silhouette-variant.png" alt="foot steps">
+      <h3>${activity.numSteps} steps</h3>
+    </div>
+    <div class="minutes-containter daily-activity-div">
+      <img class="icon" src="./images/minutes.png" alt="stop watch">
+      <h3>${activity.minutesActive} minutes</h3>
+    </div>
+    <div class="miles-container daily-activity-div">
+      <img class="icon" src="./images/miles.png" alt="miles tile">
+      <h3>${miles} miles</h3>
+    </div>
+    <div class="flights-container daily-activity-div">
+      <img class="icon" src="./images/stairs.png" alt="stairs">
+      <h3>${activity.flightsOfStairs} flights</h3>
+    </div>`;
 };
