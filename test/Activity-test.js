@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import Activity from '../src/Activity';
-import userData from '../src/data/users';
+import { userData } from '../src/data/users';
 
 describe('Activity', () => {
   let activity;
@@ -46,7 +46,7 @@ describe('Activity', () => {
     expect(activity.flightsOfStairs).to.equal(16);
   });
 
-  it.only('should calculate the number of miles walked', () => {
+  it('should calculate the number of miles walked', () => {
     const strideLength = userData[0].strideLength;
     const miles = activity.calculateMiles(strideLength);
 

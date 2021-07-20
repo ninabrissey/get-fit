@@ -1,32 +1,13 @@
 import { expect } from 'chai';
 import AllTimeHydration from '../src/AllTimeHydration';
 import DailyHydration from '../src/DailyHydration';
+import { hydrationData } from '../src/data/users';
 
 describe('AllTimeHydration', () => {
   let allTimeHydration;
-  let hydrationData;
+  let hydrationData2;
 
   beforeEach(() => {
-    hydrationData = [
-      { userID: 2, date: '2019/06/07', numOunces: 87 },
-      { userID: 1, date: '2019/06/07', numOunces: 76 },
-      { userID: 2, date: '2019/06/08', numOunces: 36 },
-      { userID: 1, date: '2019/06/08', numOunces: 48 },
-      { userID: 2, date: '2019/06/09', numOunces: 20 },
-      { userID: 1, date: '2019/06/09', numOunces: 64 },
-      { userID: 2, date: '2019/06/10', numOunces: 29 },
-      { userID: 1, date: '2019/06/10', numOunces: 30 },
-      { userID: 2, date: '2019/06/11', numOunces: 39 },
-      { userID: 1, date: '2019/06/11', numOunces: 49 },
-      { userID: 2, date: '2019/06/12', numOunces: 28 },
-      { userID: 1, date: '2019/06/12', numOunces: 56 },
-      { userID: 2, date: '2019/06/13', numOunces: 100 },
-      { userID: 1, date: '2019/06/13', numOunces: 75 },
-      { userID: 2, date: '2019/06/14', numOunces: 80 },
-      { userID: 1, date: '2019/06/14', numOunces: 47 },
-      { userID: 2, date: '2019/06/15', numOunces: 50 },
-      { userID: 1, date: '2019/06/15', numOunces: 37 },
-    ];
     allTimeHydration = new AllTimeHydration(hydrationData);
   });
 
@@ -93,7 +74,7 @@ describe('AllTimeHydration', () => {
   });
 
   it('should return the daily ounces array even if the length of the array is less than seven', () => {
-    hydrationData = [
+    hydrationData2 = [
       {
         userID: 1,
         date: '2019/06/15',
@@ -120,7 +101,7 @@ describe('AllTimeHydration', () => {
         numOunces: 75,
       },
     ];
-    allTimeHydration = new AllTimeHydration(hydrationData);
+    allTimeHydration = new AllTimeHydration(hydrationData2);
     allTimeHydration.getIndividualHydration(1);
 
     const lessThanWeekHydration =
