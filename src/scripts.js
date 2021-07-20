@@ -31,6 +31,9 @@ import './images/footsteps-silhouette-variant.png';
 import './images/minutes.png';
 import './images/miles.png';
 import './images/stairs.png';
+import './images/footsteps-silhouette-variant.png';
+import './images/stride-length.png';
+import './images/friends.png';
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -43,6 +46,7 @@ let sleepStats;
 //let fetchSleepData;
 
 // query selectors 👇
+const userInfo = document.getElementById('userInfo');
 const userGreeting = document.getElementById('userGreeting');
 const address = document.getElementById('address');
 const email = document.getElementById('email');
@@ -134,11 +138,40 @@ function reportWeeklySleep(date, property) {
 
 /* DOM  */
 function displayProfileBox() {
-  userGreeting.innerText = `Hi, ${currentUser.getFirstName()}!`;
-  address.innerText = currentUser.address;
-  email.innerText = currentUser.email;
-  stepGoal.innerText = currentUser.dailyStepGoal;
-  strideLength.innerText = currentUser.strideLength;
+  // console.log(userRepo.allUsers[currentUser.friends[0]], '<-- friends');
+  // const friendNames = userRepo.allUsers[currentUser.friends].reduce(
+  //   (friendList, friend) => {
+  //     friendList.push(friend.getFirstName());
+  //   },
+  //   []
+  // );
+
+  userInfo.innerHTML = `
+    <div class="user-info-div">
+      <h2 class="user-greeting" id="userGreeting">Hi, ${currentUser.getFirstName()}!</h2>
+      <p id="address">Address: ${currentUser.address}</p>
+      <p id="email">Email: ${currentUser.email}</p>
+      <div class="user-spec">
+        <img class="mini-icon" src="./images/footsteps-silhouette-variant.png" alt="foot steps">
+        <p id="stepGoal">Step Goal: ${currentUser.dailyStepGoal}</p>
+      </div>
+      <div class="user-spec">
+        <img class="mini-icon" src="./images/stride-length.png" alt="foot steps">
+        <p id="strideLength">Stride Length: ${currentUser.strideLength}</p>
+      </div>
+      <div class="user-spec">
+        <img class="mini-icon" src="./images/friends.png" alt="friends">
+        <p>Friends: ${currentUser.friends.join(', ')}</p>
+      </div>
+    </div>`;
+
+  // <p>Friends: ${friendNames.join(', ')}</p>
+
+  // userGreeting.innerText = `Hi, ${currentUser.getFirstName()}!`;
+  // address.innerText = currentUser.address;
+  // email.innerText = currentUser.email;
+  // stepGoal.innerText = currentUser.dailyStepGoal;
+  // strideLength.innerText = currentUser.strideLength;
   // friend1.innerText = userRepo.allUsers[currentUser.friends[0]].getFirstName();
   // friend2.innerText = userRepo.allUsers[currentUser.friends[1]].getFirstName();
   //friend3.innerText = userRepo.allUsers[currentUser.friends[2]].getFirstName();
