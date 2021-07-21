@@ -42,7 +42,7 @@ This is a thing
 ![get-fit-desktop](https://user-images.githubusercontent.com/80136642/126420322-3c9f5912-b5ee-4cd2-9028-11f68fe2f7b7.gif)
 tablet view                   |  mobile view
 :-------------------------:|:-------------------------:
-![get-fit-tablet](https://user-images.githubusercontent.com/80136642/126420111-1f1d0285-84c6-45a6-94dc-f9cb51efd868.gif) |  (https://user-images.githubusercontent.com/80136642/126420083-041e9209-4b44-4368-bdb8-5ded3b8852ea.gif)
+![get-fit-tablet](https://user-images.githubusercontent.com/80136642/126420111-1f1d0285-84c6-45a6-94dc-f9cb51efd868.gif) | ![get-fit-mobile](https://user-images.githubusercontent.com/80136642/126420083-041e9209-4b44-4368-bdb8-5ded3b8852ea.gif)
 
 ## Possible Future Extensions
 
