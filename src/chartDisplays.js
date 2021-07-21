@@ -12,7 +12,7 @@ export const makeDailyHydrationChart = (dayData) => {
           // responsive: true,
           label: "Daily Water Intake - (day's date)",
           backgroundColor: ['#4CDB63', '#2BBFAB'],
-          data: [100, dayData.ounces],
+          data: [100, 100 - dayData.ounces],
         },
       ],
     },
@@ -22,7 +22,7 @@ export const makeDailyHydrationChart = (dayData) => {
 };
 
 export const makeWeeklyHydrationChart = (weekOfWater) => {
-  const labels2 = weekOfWater.map((day) => day.date);
+  const labels2 = weekOfWater.map((day) => day.date.slice(6, 10));
   const data = {
     labels: labels2,
     datasets: [
@@ -48,6 +48,8 @@ export const makeWeeklyHydrationChart = (weekOfWater) => {
     type: 'bar',
     data: data,
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         y: {
           beginAtZero: true,
@@ -82,6 +84,8 @@ export const makeNightsSleepChart = (sleep) => {
     type: 'bar',
     data: data,
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       indexAxis: 'y',
       elements: {
         bar: {
@@ -89,6 +93,7 @@ export const makeNightsSleepChart = (sleep) => {
         },
       },
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'right',
@@ -140,6 +145,7 @@ export const makeNightsQualityChart = (sleep) => {
         },
       },
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'right',
@@ -183,6 +189,8 @@ export const makeWeeksSleepChart = (weekOfSleep) => {
     type: 'bar',
     data: data,
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         y: {
           beginAtZero: true,

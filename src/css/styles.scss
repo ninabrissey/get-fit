@@ -2,12 +2,11 @@
 
 body {
   background: #e0e0e0;
-  margin: 1.5rem;
   color: #666666;
   font-family: Oswald;
+  margin: 1.5rem;
   text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff,
     1px 1px 0 #ffffff;
-  // overflow: hidden;
 }
 
 h1 {
@@ -15,35 +14,34 @@ h1 {
 }
 
 p {
-  margin: 3%;
   font-size: 1.3em;
-}
-
-.user-greeting {
-  margin-bottom: 0;
+  margin: 3%;
 }
 
 .wrapper {
-  height: 90vh;
   border-width: 1.5em;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr 1fr;
   gap: 1.5em;
 }
 
 section {
-  padding: 0 1em 0 1em;
-  border-radius: 5px;
   background: #e0e0e0;
+  border-radius: 5px;
   box-shadow: 16px 16px 29px #898989, -16px -16px 29px #ffffff;
+  padding: 0 1em 0 1em;
 }
 
 .user-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   grid-column: 1/2;
+  justify-content: center;
+}
+
+.user-greeting {
+  margin-bottom: 0;
 }
 
 .user-spec {
@@ -51,24 +49,27 @@ section {
 }
 
 .user-info-div {
+  height: 90%;
+  margin-bottom: 2.5em;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  width: 90%;
-  margin-bottom: 3em;
 }
 
 .daily-water {
   grid-column: 2/3;
+  height: 100%;
+  width: 90.2%;
 }
 
 .daily-water-chart-container {
   height: 90%;
-  width: 90%;
-  position: relative;
-  margin-top: 8%;
+  margin-bottom: 5%;
   margin-left: 5%;
+  margin-top: 8%;
+  position: relative;
+  width: 90%;
 }
 
 .weekly-water {
@@ -76,26 +77,25 @@ section {
 }
 
 .weekly-water-chart-container {
-  height: 90%;
-  width: 90%;
-  position: relative;
+  height: 70%;
   margin-bottom: 5%;
   margin-left: 4.5%;
+  position: relative;
+  width: 90%;
 }
 .sleep-report {
-  grid-row: 2/3;
   position: relative;
+  grid-row: 2/3;
 }
 
 .sleep-chart-container .sleep-score-chart-container {
-  position: relative;
   height: 45%;
+  position: relative;
   width: 90%;
+}
 
-  // position: relative;
-  // margin: auto;
-  // height: 80vh;
-  // width: 70vw;
+.sleep-score-chart-container {
+  margin-bottom: 10%;
 }
 
 .weekly-sleep {
@@ -103,42 +103,42 @@ section {
 }
 
 .weekly-sleep-container {
-  height: 90%;
-  width: 90%;
+  height: 70%;
   position: relative;
+  width: 90%;
+}
+
+.weekly-sleep-chart-container {
+  height: 70%;
+  position: relative;
+  margin-bottom: 5%;
+  margin-left: 4.5%;
+  width: 90%;
 }
 
 .daily-activity {
-  grid-column: 4/5;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  grid-column: 4/5;
 }
 
 .daily-activity-container {
-  // height: 90%;
-  // width: 90%;
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-around;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  margin-bottom: 2em;
 }
 
 .daily-activity-div {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  // height: 90%;
-  // width: 90%;
 }
 
-// styling for icons
 .icon {
   height: 7em;
-  // justify-self: center;
 }
 
 .mini-icon {
@@ -146,35 +146,6 @@ section {
   margin-right: 0.6em;
   margin-top: 0.5em;
 }
-
-// tablet responsive design
-// @media screen and (max-width: 1023px) {
-//   .wrapper {
-//     // display: grid;
-//     grid-template-columns: 1fr 1fr !important;
-//     grid-template-rows: 1fr 1fr 1fr !important;
-//   }
-
-//   .user-info .daily-water {
-//     grid-row: 1/2;
-//   }
-
-//   .weekly-water .sleep-report {
-//     grid-row: 2/3;
-//   }
-
-//   .weekly-sleep .daily-activity {
-//     grid-row: 3/4;
-//   }
-
-//   .user-info .weekly-water .weekly-sleep {
-//     grid-column: 1/2;
-//   }
-
-//   .daily-water .sleep-report .daily-activity {
-//     grid-column: 2/3;
-//   }
-// }
 
 @media screen and (max-width: 1023px) {
   .wrapper {
@@ -213,11 +184,18 @@ section {
   }
 }
 
-// mobile responsive design
 @media screen and (max-width: 767px) {
+  body {
+    margin-left: -0.05em;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
   .wrapper {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(6, 1fr);
   }
 
   .user-info {
