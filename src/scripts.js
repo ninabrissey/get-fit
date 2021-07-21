@@ -92,11 +92,6 @@ const instantiateActivity = (parsedData, user) => {
   activityStats.getUserActivities(user);
 };
 
-const reportDailyActivity = (date) => {
-  const activityInfo = activityStats.getDayActivity(date);
-  return activityInfo;
-};
-
 // DOM updates 👇
 const displayProfileBox = () => {
   const friendNames = currentUser.friends.reduce((friendList, friendNumber) => {
@@ -152,7 +147,7 @@ const displayWeeklySleep = (date) => {
 };
 
 const displayDailyActivity = (date) => {
-  const activity = reportDailyActivity(date);
+  const activity = activityStats.getDayActivity(date);
   const miles = activity.calculateMiles(currentUser.strideLength);
 
   dailyActivityContainer.innerHTML = `
