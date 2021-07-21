@@ -1,5 +1,7 @@
 # Get Fit
 
+<img width="1920" alt="get-fit-screenshot" src="https://user-images.githubusercontent.com/80136642/126420472-c3cda06a-1ffe-4747-9111-9840abf3d671.png">
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -37,7 +39,9 @@ This is a thing
 
 ## Illustrations
 
-![Get-Fit]()
+![get-fit-desktop](https://user-images.githubusercontent.com/80136642/126420322-3c9f5912-b5ee-4cd2-9028-11f68fe2f7b7.gif)
+![get-fit-tablet](https://user-images.githubusercontent.com/80136642/126420111-1f1d0285-84c6-45a6-94dc-f9cb51efd868.gif)
+![get-fit-mobile](https://user-images.githubusercontent.com/80136642/126420083-041e9209-4b44-4368-bdb8-5ded3b8852ea.gif)
 
 ## Possible Future Extensions
 
