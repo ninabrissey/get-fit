@@ -4,7 +4,6 @@ import AllTimeHydration from './AllTimeHydration';
 import SleepRepository from './SleepRepository';
 import ActivityRepository from './ActivityRepository';
 import getAllData from './apiCalls';
-// import domUpdates from './domUpdates';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 import {
@@ -126,7 +125,7 @@ const reportDailyActivity = (date) => {
   return activityInfo;
 };
 
-// dom updates 👇
+// DOM updates 👇
 const displayProfileBox = () => {
   const friendNames = currentUser.friends.reduce((friendList, friendNumber) => {
     let firstName = userRepo.allUsers[friendNumber - 1].getFirstName();
