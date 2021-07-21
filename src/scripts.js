@@ -92,39 +92,6 @@ const instantiateActivity = (parsedData, user) => {
   activityStats.getUserActivities(user);
 };
 
-// reports 👇
-const reportDailyHydration = (date) => {
-  const day = hydrationStats.individualHydration.find(
-    (element) => element.date === date
-  );
-  const avg = hydrationStats.calculateAvgOunces();
-
-  return { ounces: day.numOunces, average: avg };
-};
-
-const reportNightlySleep = (date, property) => {
-  const night = sleepStats.individualsSleep.find(
-    (sleep) => sleep.date === date
-  );
-  const avg = sleepStats.calculateAvg(property);
-
-  return { date: date.slice(6, 10), value: night[property], average: avg };
-};
-
-const reportWeeklySleep = (date, property) => {
-  const week = sleepStats.getSevenDays(date);
-  const weeksSleep = week.map((day) => {
-    return { date: day.date.slice(6, 10), [property]: day[property] };
-  });
-
-  return weeksSleep;
-};
-
-const reportDailyActivity = (date) => {
-  const activityInfo = activityStats.getDayActivity(date);
-  return activityInfo;
-};
-
 // DOM updates 👇
 const displayProfileBox = () => {
   const friendNames = currentUser.friends.reduce((friendList, friendNumber) => {
@@ -156,7 +123,7 @@ const displayProfileBox = () => {
 };
 
 const displayDailyHydration = (date) => {
-  const report = reportDailyHydration(date);
+  const report = hydrationStats.reportDailyHydration(date);
   makeDailyHydrationChart(report);
 };
 
@@ -166,21 +133,21 @@ const displayWeeklyHydration = (date) => {
 };
 
 const displayDailySleepStats = (date) => {
-  const hoursSlept = reportNightlySleep(date, 'hoursSlept');
-  const sleepQuality = reportNightlySleep(date, 'sleepQuality');
+  const hoursSlept = sleepStats.reportNightlySleep(date, 'hoursSlept');
+  const sleepQuality = sleepStats.reportNightlySleep(date, 'sleepQuality');
 
   makeNightsSleepChart(hoursSlept);
   makeNightsQualityChart(sleepQuality);
 };
 
 const displayWeeklySleep = (date) => {
-  const week = reportWeeklySleep(date, 'hoursSlept');
+  const week = sleepStats.reportWeeklySleep(date, 'hoursSlept');
 
   makeWeeksSleepChart(week);
 };
 
 const displayDailyActivity = (date) => {
-  const activity = reportDailyActivity(date);
+  const activity = activityStats.getDayActivity(date);
   const miles = activity.calculateMiles(currentUser.strideLength);
 
   dailyActivityContainer.innerHTML = `

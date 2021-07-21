@@ -17,7 +17,7 @@
 
 ## Introduction
 
-This is a thing
+Get Fit is a health and fitness tracking app. It allows a user to review their daily and weekly health goals in a bright, friendly display.
 
 ## Technologies
 
@@ -30,12 +30,13 @@ This is a thing
 
 ## Features
 
-- Get Fit is a health and fitness app that lets a user review their daily and weekly health goals. The dashboard displays
-  - Daily and weekly water consumption
-  - Daily hours of sleep and sleep score compared to user's average
-  - Weekly hours slept
-  - Daily activities including total steps, minutes active, flights of stairs climbed, and miles walked
-    so that a user can keep track of their goals and their progress.
+The dashboard displays
+
+- Daily and weekly water consumption
+- Daily hours of sleep and sleep score compared to user's average
+- Weekly hours slept
+- Daily activities including total steps, minutes active, flights of stairs climbed, and miles walked
+  so that a user can keep track of their goals and their progress.
 
 ## Illustrations
 

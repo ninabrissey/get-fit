@@ -97,4 +97,20 @@ describe('SleepRepository', () => {
 
     expect(everyoneAvg).to.equal(7.1);
   });
+
+  it("should be able to report a night's sleep and average", () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const night = sleepRepo.reportNightlySleep('2019/06/08', 'hoursSlept');
+
+    expect(night).to.deep.equal({ date: '6/08', value: 5, average: 6.6 });
+  });
+
+  it("should be able to report a week's worth of sleep", () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const week = sleepRepo.reportWeeklySleep('2019/06/15', 'hoursSlept');
+
+    expect(week[0]).to.deep.equal({ date: '2019/06/09', hoursSlept: 5 });
+  });
 });

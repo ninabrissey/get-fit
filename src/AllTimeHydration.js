@@ -38,6 +38,15 @@ class AllTimeHydration {
     }
     return this.individualHydration.slice(i - 6, i + 1);
   }
+
+  reportDailyHydration(date) {
+    const day = this.individualHydration.find(
+      (element) => element.date === date
+    );
+    const avg = this.calculateAvgOunces();
+
+    return { ounces: day.numOunces, average: avg };
+  }
 }
 
 export default AllTimeHydration;
