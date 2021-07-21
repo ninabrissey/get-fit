@@ -47,6 +47,13 @@ class SleepRepository {
     }, 0);
     return Number((allSleep / this.allSleeps.length).toFixed(1));
   }
+
+  reportNightlySleep(date, property) {
+    const night = this.individualsSleep.find((sleep) => sleep.date === date);
+    const avg = this.calculateAvg(property);
+
+    return { date: date.slice(6, 10), value: night[property], average: avg };
+  }
 }
 
 export default SleepRepository;
