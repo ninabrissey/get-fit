@@ -52,19 +52,4 @@ describe('ActivityRepository', () => {
       flightsOfStairs: 16,
     });
   });
-
-  it("should be able to reprot a day's activity", () => {
-    activityRepo.getUserActivities(1);
-
-    const activity = activityRepo.reportDailyActivity();
-    console.log(activity);
-
-    // expect(activityRepo.userActivity[0]).to.deep.equal({
-    //   id: 1,
-    //   date: '2019/06/15',
-    //   numSteps: 3577,
-    //   minutesActive: 140,
-    //   flightsOfStairs: 16,
-    // });
-  });
 });
