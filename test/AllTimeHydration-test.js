@@ -134,4 +134,12 @@ describe('AllTimeHydration', () => {
 
     expect(lessThanWeekHydration[1].numOunces).to.deep.equal(36);
   });
+
+  it('should be able to report daily hydration and average hydration', () => {
+    allTimeHydration.getIndividualHydration(1);
+
+    const report = allTimeHydration.reportDailyHydration('2019/06/15');
+
+    expect(report).to.deep.equal({ ounces: 37, average: 54 });
+  });
 });

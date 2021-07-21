@@ -92,16 +92,6 @@ const instantiateActivity = (parsedData, user) => {
   activityStats.getUserActivities(user);
 };
 
-// reports 👇
-const reportDailyHydration = (date) => {
-  const day = hydrationStats.individualHydration.find(
-    (element) => element.date === date
-  );
-  const avg = hydrationStats.calculateAvgOunces();
-
-  return { ounces: day.numOunces, average: avg };
-};
-
 const reportNightlySleep = (date, property) => {
   const night = sleepStats.individualsSleep.find(
     (sleep) => sleep.date === date
@@ -156,7 +146,7 @@ const displayProfileBox = () => {
 };
 
 const displayDailyHydration = (date) => {
-  const report = reportDailyHydration(date);
+  const report = hydrationStats.reportDailyHydration(date);
   makeDailyHydrationChart(report);
 };
 
