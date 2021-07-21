@@ -1,82 +1,77 @@
-# FitLit Starter Kit
+# Get Fit
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+## Table of Contents
 
-## Setup
+- [Introduction](#introduction)
+- [Technologies](#technologies)
+- [Features](#features)
+- [Illustrations](#illustrations)
+- [Possible Future Extensions](#possible-future-extensions)
+- [Set Up](#set-up)
+- [Organizational Resources](#organizational-resources)
+- [Sources](#sources)
+- [Contributors](#contributors)
+- [Project Specs](#project-specs)
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+## Introduction
 
-## Testing
+This is a thing
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+## Technologies
 
-## Linting Your Code
+- Javascript
+- HTML
+- SCSS
+- Webpack
+- [Charts.js](https://www.chartjs.org/)
+- [flaticon](https://www.flaticon.com/)
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+## Features
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+- Get Fit is a health and fitness app that lets a user review their daily and weekly health goals. The dashboard displays
+  - Daily and weekly water consumption
+  - Daily hours of sleep and sleep score compared to user's average
+  - Weekly hours slept
+  - Daily activities including total steps, minutes active, flights of stairs climbed, and miles walked
+    so that a user can keep track of their goals and their progress.
 
-## Data Model
+## Illustrations
 
-**Users**
+![Get-Fit]()
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+## Possible Future Extensions
 
-**Activity**
+This app has lots of potential extensions including
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+- Date selection so a user can choose daily and weekly reports from their history
+- Display weekly fitness activity
+- Let users invite friends to a fitness activity challenge
 
-**Hydration**
+## Set Up
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
+1. Fork this repo
+2. In your terminal run `git clone git@github.com:rachelJensen/get-fit.git`
+3. In your terminal clone down this API [repo](https://github.com/turingschool-examples/fitlit-api)
+4. In a new terminal window cd into the API directory and run npm install and then npm start
+5. Finally, open a browser and go to `localhost:8080`
 
-**Sleep**
+## Organizational Resources
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+- [Project-Board](https://github.com/rachelJensen/get-fit/projects/1)
+- [Notion-Planning-Doc](https://www.notion.so/FitLit-035117de7c0d4216b81eb6bfb18779e2)
+- [Design-Inspo](https://miro.com/app/board/o9J_l7WO7i8=/)
+
+## Sources
+
+- [MDN](http://developer.mozilla.org/en-US/)
+- [CSS-TRICKS](https://css-tricks.com/)
+- [Neumorphism](https://neumorphism.io/#e0e0e0)
+
+## Contributors
+
+- [Nina Brissey](https://github.com/ninabrissey)
+- [Rachel Jensen](https://github.com/rachelJensen)
+
+## Project Specs
+
+- The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
