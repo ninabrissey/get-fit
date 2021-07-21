@@ -105,4 +105,14 @@ describe('SleepRepository', () => {
 
     expect(night).to.deep.equal({ date: '6/08', value: 5, average: 6.6 });
   });
+
+  it("should be able to report a week's worth of sleep", () => {
+    sleepRepo.getIndividualsSleep(1);
+
+    const week = sleepRepo.reportWeeklySleep('2019/06/15', 'hoursSlept');
+
+    console.log(week);
+
+    expect(week[0]).to.deep.equal({ date: '2019/06/09', hoursSlept: 5 });
+  });
 });
