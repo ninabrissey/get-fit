@@ -111,8 +111,6 @@ describe('SleepRepository', () => {
 
     const week = sleepRepo.reportWeeklySleep('2019/06/15', 'hoursSlept');
 
-    console.log(week);
-
     expect(week[0]).to.deep.equal({ date: '2019/06/09', hoursSlept: 5 });
   });
 });

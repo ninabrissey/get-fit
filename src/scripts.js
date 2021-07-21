@@ -92,24 +92,6 @@ const instantiateActivity = (parsedData, user) => {
   activityStats.getUserActivities(user);
 };
 
-// const reportNightlySleep = (date, property) => {
-//   const night = sleepStats.individualsSleep.find(
-//     (sleep) => sleep.date === date
-//   );
-//   const avg = sleepStats.calculateAvg(property);
-
-//   return { date: date.slice(6, 10), value: night[property], average: avg };
-// };
-
-const reportWeeklySleep = (date, property) => {
-  const week = sleepStats.getSevenDays(date);
-  const weeksSleep = week.map((day) => {
-    return { date: day.date, [property]: day[property] };
-  });
-
-  return weeksSleep;
-};
-
 const reportDailyActivity = (date) => {
   const activityInfo = activityStats.getDayActivity(date);
   return activityInfo;
@@ -164,7 +146,7 @@ const displayDailySleepStats = (date) => {
 };
 
 const displayWeeklySleep = (date) => {
-  const week = reportWeeklySleep(date, 'hoursSlept');
+  const week = sleepStats.reportWeeklySleep(date, 'hoursSlept');
 
   makeWeeksSleepChart(week);
 };
