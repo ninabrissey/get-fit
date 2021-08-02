@@ -1,5 +1,6 @@
 import { Chart } from 'chart.js';
 Chart.defaults.font.family = "'Oswald', sans-serif";
+Chart.defaults.color = '#1a1919';
 
 export const makeDailyHydrationChart = (dayData) => {
   const config = {
@@ -106,9 +107,6 @@ export const makeNightsSleepChart = (sleep) => {
     },
   };
 
-  //const NUMBER_CFG = { count: 1, min: 0, max: 12 };
-
-  //const labels = Utils.months({ count: 7 });
   const sleepChart = document.getElementById('sleepChart'); //added for test
   new Chart(sleepChart, config);
 };
