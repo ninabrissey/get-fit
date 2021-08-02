@@ -58,7 +58,7 @@ class SleepRepository {
   reportWeeklySleep(date, property) {
     const week = this.getSevenDays(date);
     const weeksSleep = week.map((day) => {
-      return { date: day.date, [property]: day[property] };
+      return { date: day.date.slice(6, 10), [property]: day[property] };
     });
 
     return weeksSleep;
