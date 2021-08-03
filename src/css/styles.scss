@@ -80,6 +80,7 @@ section {
   height: 70%;
   margin-bottom: 5%;
   margin-left: 4.5%;
+  margin-top: 7%;
   position: relative;
   width: 90%;
 }
@@ -145,6 +146,11 @@ section {
   height: 2.3em;
   margin-right: 0.6em;
   margin-top: 0.5em;
+}
+
+input {
+  margin-top: 3%;
+  font-family: Oswald;
 }
 
 @media screen and (max-width: 1023px) {
