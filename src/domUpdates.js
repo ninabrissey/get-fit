@@ -23,8 +23,9 @@ const userInfo = document.getElementById('userInfo');
 const dailyActivityContainer = document.getElementById(
   'dailyActivityContainer'
 );
-const weeksWaterInput = document.getElementById('weekWaterInput');
+export const weeksWaterInput = document.getElementById('weeksWaterInput');
 
+// display functions 👇
 export const displayAllData = () => {
   const stats = hydrationStats.individualHydration;
   const todaysDate = stats[stats.length - 1].date;
@@ -37,7 +38,6 @@ export const displayAllData = () => {
   displayDailyActivity(todaysDate);
 };
 
-// display functions 👇
 const displayProfileBox = () => {
   const friendNames = currentUser.friends.reduce((friendList, friendNumber) => {
     let firstName = userRepo.allUsers[friendNumber - 1].getFirstName();
@@ -112,4 +112,15 @@ const displayDailyActivity = (date) => {
       <img class="icon" src="./images/stairs.png" alt="stairs">
       <h3>${activity.flightsOfStairs} flights</h3>
     </div>`;
+};
+
+// display data based on user input 👇
+export const displayUserSelectWeek = () => {
+  const date = weeksWaterInput.value.replace('-', '/').replace('-', '/');
+  console.log(date);
+  displayWeeklyHydration(date);
+  // 👆 this is not displaying the new chart
+  // error message says 'Uncaught Error: Canvas
+  // is already in use. Chart with ID '1' must be
+  // destroyed before the canvas can be reused.'
 };
