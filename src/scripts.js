@@ -3,7 +3,11 @@ import UserRepository from './UserRepository';
 import AllTimeHydration from './AllTimeHydration';
 import SleepRepository from './SleepRepository';
 import ActivityRepository from './ActivityRepository';
-import { displayAllData } from './domUpdates';
+import {
+  displayAllData,
+  weeksWaterInput,
+  displayUserSelectWeek,
+} from './domUpdates';
 import getAllData from './apiCalls';
 
 // styling 👇
@@ -31,6 +35,7 @@ let activityStats;
 
 // event listeners 👇
 window.addEventListener('load', loadUserData);
+weeksWaterInput.addEventListener('change', displayUserSelectWeek);
 
 // handlers and helpers 👇
 function loadUserData() {
